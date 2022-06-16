@@ -1,0 +1,1 @@
+{"name":"Local: Articulation_points_and_bridges","url":"d:\\Competitive_Programming\\Graphs\\Articulation_points_and_bridges.cpp","tests":[{"id":1651480926974,"input":"5 5\n1 2\n2 3\n1 3\n3 4\n4 5","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Competitive_Programming\\Graphs\\Articulation_points_and_bridges.cpp","group":"local","local":true}

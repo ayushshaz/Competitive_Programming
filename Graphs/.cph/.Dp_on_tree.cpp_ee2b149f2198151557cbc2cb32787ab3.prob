@@ -1,0 +1,1 @@
+{"name":"Local: Dp_on_tree","url":"d:\\Competitive_Programming\\Graphs\\Dp_on_tree.cpp","tests":[{"id":1651425503616,"input":"10\n1 2\n1 4\n2 8\n8 6\n8 10\n6 9\n4 3\n4 5\n5 7","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Competitive_Programming\\Graphs\\Dp_on_tree.cpp","group":"local","local":true}
