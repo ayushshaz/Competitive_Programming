@@ -1,0 +1,1 @@
+{"name":"Local: Mixtures_SPOJ","url":"d:\\Competitive_Programming\\Dynamic_Programming\\Mixtures_SPOJ.cpp","tests":[{"id":1655994698231,"input":"2\n18 19\n3\n40 60 20","output":"342\n2400"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Competitive_Programming\\Dynamic_Programming\\Mixtures_SPOJ.cpp","group":"local","local":true}
