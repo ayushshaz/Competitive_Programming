@@ -21,7 +21,6 @@ int query(int *tree,int ss,int se,int qs,int qe,int index){
     int leftAns = query(tree,ss,mid,qs,qe,2*index);
     int rightAns  = query(tree,mid+1,se,qs,qe,2*index+1);
     return min(leftAns,rightAns);
-    
 }
 
 
@@ -165,6 +164,14 @@ int main() {
     
     int a[] = {1,3,2,-5,6,4};
     int n = sizeof(a)/sizeof(int);
+    
+    //It is only worth noting that the size of this array with such numbering 
+    //should be set not 2n, but 4n. The fact is that such numbering does not work
+    // perfectly in the case when nit is not a power of two - then missing numbers 
+    //appear that do not correspond to any tree vertices (in fact, the numbering behaves 
+    //as if it were nrounded up to the nearest power of two) . This does not create any 
+    //difficulties in implementation, however, it leads to the fact that the size of the 
+    //array must be increased to 4n.
     
     int *tree = new int[4*n+1];
     
