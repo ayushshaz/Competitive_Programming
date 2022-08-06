@@ -165,13 +165,14 @@ int main() {
     int a[] = {1,3,2,-5,6,4};
     int n = sizeof(a)/sizeof(int);
     
-    //It is only worth noting that the size of this array with such numbering 
-    //should be set not 2n, but 4n. The fact is that such numbering does not work
-    // perfectly in the case when nit is not a power of two - then missing numbers 
-    //appear that do not correspond to any tree vertices (in fact, the numbering behaves 
-    //as if it were nrounded up to the nearest power of two) . This does not create any 
-    //difficulties in implementation, however, it leads to the fact that the size of the 
-    //array must be increased to 4n.
+// a = [1, 2, 3, 4, 5];
+// st [15,6,9,3,3,4,5,1,2,".",".",".",".",".","."]
+// ………….15……………..
+// …..6……………9……….
+// ...3…3…….4…5….. <—— n (5) is Not power of 2
+// 1..2………………… <—— st size got doubled (one more line means double eles)
+//Approx 4N elements when array size is not 2 power
+
     
     int *tree = new int[4*n+1];
     
