@@ -164,7 +164,6 @@ int main() {
     
     int a[] = {1,3,2,-5,6,4};
     int n = sizeof(a)/sizeof(int);
-    
 // a = [1, 2, 3, 4, 5];
 // st [15,6,9,3,3,4,5,1,2,".",".",".",".",".","."]
 // ………….15……………..
@@ -173,7 +172,6 @@ int main() {
 // 1..2………………… <—— st size got doubled (one more line means double eles)
 //Approx 4N elements when array size is not 2 power
 
-    
     int *tree = new int[4*n+1];
     
     buildTree(a,0,n-1,tree,1);
