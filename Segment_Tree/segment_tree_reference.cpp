@@ -2,7 +2,6 @@
 #include<climits>
 using namespace std;
 
-
 int lazy[1000]  = {0};
 
 int query(int *tree,int ss,int se,int qs,int qe,int index){
@@ -59,6 +58,29 @@ void updateNode(int *tree,int ss,int se,int i,int increment,int index){
     updateNode(tree,mid+1,se,i,increment,2*index+1);
     tree[index] = min(tree[2*index],tree[2*index+1]);
     return;
+}
+
+void updateRange(int *tree,int ss,int se,int l,int r,int inc,int index){
+    //Out of bounds 
+    if(l>se || r<ss){
+        return;
+    }
+    
+    // Leaf Node 
+    if(ss==se){
+        tree[index] += inc;
+        return;
+    }
+    
+    // Left and Right  Call Otherwise 
+    int mid = (ss+se)/2;
+    
+    updateRange(tree,ss,mid,l,r,inc,2*index);
+    updateRange(tree,mid+1,se,l,r,inc,2*index+1);
+    
+    tree[index] = min(tree[2*index],tree[2*index+1]);
+    return;
+    
 }
 
 int queryLazy(int *tree,int ss,int se,int qs,int qe,int index){
@@ -136,41 +158,18 @@ void updateRangeLazy(int *tree,int ss,int se,int l,int r,int inc,int index){
     
 }
 
-void updateRange(int *tree,int ss,int se,int l,int r,int inc,int index){
-    //Out of bounds 
-    if(l>se || r<ss){
-        return;
-    }
-    
-    // Leaf Node 
-    if(ss==se){
-        tree[index] += inc;
-        return;
-    }
-    
-    // Left and Right  Call Otherwise 
-    int mid = (ss+se)/2;
-    
-    updateRange(tree,ss,mid,l,r,inc,2*index);
-    updateRange(tree,mid+1,se,l,r,inc,2*index+1);
-    
-    tree[index] = min(tree[2*index],tree[2*index+1]);
-    return;
-    
-}
-
-
 int main() {
     
     int a[] = {1,3,2,-5,6,4};
     int n = sizeof(a)/sizeof(int);
-// a = [1, 2, 3, 4, 5];
-// st [15,6,9,3,3,4,5,1,2,".",".",".",".",".","."]
-// ………….15……………..
-// …..6……………9……….
-// ...3…3…….4…5….. <—— n (5) is Not power of 2
-// 1..2………………… <—— st size got doubled (one more line means double eles)
-//Approx 4N elements when array size is not 2 power
+
+    // a = [1, 2, 3, 4, 5];
+    // st [15,6,9,3,3,4,5,1,2,".",".",".",".",".","."]
+    // ………….15……………..
+    // …..6……………9……….
+    // ...3…3…….4…5….. <—— n (5) is Not power of 2
+    // 1..2………………… <—— st size got doubled (one more line means double eles)
+    //Approx 4N elements when array size is not 2 power
 
     int *tree = new int[4*n+1];
     
@@ -179,9 +178,7 @@ int main() {
     //Let print the tree
     for(int i=1;i<=13;i++){
        // cout<<tree[i]<<" ";
-    }
-    
-    
+    } 
     
     //updateNode(tree,0,n-1,2,10,1);
     //updateNode(tree,0,n-1,3,15,1);
@@ -194,7 +191,5 @@ int main() {
         cin>>l>>r;
         cout<< queryLazy(tree,0,n-1,l,r,1)<<endl;
     }
-    
-    
     return 0;
 }
