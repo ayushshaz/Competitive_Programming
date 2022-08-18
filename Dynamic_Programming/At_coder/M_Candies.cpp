@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int number_of_ways_candies(int arr[], int n, int k, int i){     // 'i' is an iterator to n
+int number_of_ways_candies(int arr[], int n, int k, int i){     // 'i' is an iterator to n  
     // base case
     if(i==n-1){
         if(k>arr[i]){
