@@ -11,6 +11,7 @@ void extended_euclid(int a,int b){ // Extended
         x=1;
         y=0;
         gcd_value = a;
+        return;
     }
     extended_euclid(b,a%b);
     int cx = y;
