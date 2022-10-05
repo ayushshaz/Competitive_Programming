@@ -14,17 +14,26 @@ class Tiger : virtual public Animal{
     Tiger(){
         cout<<"Tiger"<<endl;
     }
+    void walk(){
+        cout<<"Walking TIger"<<endl;    
+    }
 };
 class Lion: virtual public Animal{
     public:
     Lion(){
         cout<<"Lion"<<endl;
     }
+    void walk(){
+        cout<<"Walking Lion"<<endl;    
+    }
 };
 class Liger: public Tiger, public Lion{
     public:
     Liger(){
         cout<<"Liger"<<endl;
+    }
+    void walk(){
+        cout<<"Walking Liger"<<endl;    
     }
 };
 int main() {
