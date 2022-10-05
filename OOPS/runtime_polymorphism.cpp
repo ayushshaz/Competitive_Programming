@@ -15,7 +15,10 @@ class Tiger : virtual public Animal{
         cout<<"Tiger"<<endl;
     }
     void walk(){
-        cout<<"Walking TIger"<<endl;    
+        cout<<"Walking tiger"<<endl;
+    }
+    void jump(){
+        cout<<"Jumping Tiger"<<endl;    
     }
 };
 class Lion: virtual public Animal{
@@ -37,6 +40,13 @@ class Liger: public Tiger, public Lion{
     }
 };
 int main() {
-    Liger a;
+    Liger a; 
+    // Lion l; Tiger t; Animal an;
+    // cout<<sizeof(an)<<endl;
+    // cout<<sizeof(t)<<endl; // It has one vptr pointer
+    // cout<<sizeof(l)<<endl; // It has one vptr pointer
+    // cout<<sizeof(a)<<endl; // It has two vptr pointer
     a.walk();
+    a.jump();
+
 }
