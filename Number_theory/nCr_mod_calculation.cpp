@@ -30,6 +30,7 @@ double combination(int n, int r, int mod){
     return ans;
 }
 int main(){
+    int mod = 998244353; // mod has to be a prime or else it might give wrong answer
     int t;cin>>t;
     while(t--){
         cout<<combination(5,3,11)<<endl;
