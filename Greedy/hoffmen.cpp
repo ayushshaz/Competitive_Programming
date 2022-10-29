@@ -18,64 +18,66 @@ using vvi = vector<vi>;
 using vl = vector<ll>;
 using vvl = vector<vl>;
 }
-struct node{
-    char c;
-    int f;
-    node *left,*right;
-    node(char c, int f, node *a, node *b){
-        this->c=c;
-        this->f=f;
-        left=a;
-        right=b;
-    }
-};
-
-class arrange{
+class node{
     public:
-    bool operator()(node a, node b){
-        if(a.f>b.f){
-            return true;
-        }
-        return false;
+    char data;
+    int freq;
+    node* l;
+    node* r;
+    node(char d,int f){
+        data=d;
+        freq=f;
+        l=NULL;
+        r=NULL;
     }
 };
-void output_tree(node *tree, vector<bool> b){
-    if(tree->c != ' '){ //or (tree->left==NULL && tree->right==NULL) same thing
-        cout<<tree->c<<" "<<tree->f<<" "<<b.size();
-        // for(auto x : b){
-        //     cout<<x<<" ";
-        // }
-        // cout<<endl;
+class comp{
+    public:
+    bool operator()(node* l,node* r){
+        return l->freq > r->freq;
+    }
+};
+node* newnode(char c, int d){
+    node* n= new node(c,d);
+    return n;
+}
+void encodingTree(node *tree,string &code){
+    if(tree==NULL){
         return;
     }
-    b.push_back(0);
-    output_tree(tree->left,b);
-    b.pop_back();
-    b.push_back(1);
-    output_tree(tree->right,b);
-    b.pop_back();
-}
-
-void print_the_tree(node tree){
-   vector<bool> b;
-   output_tree(&tree,b);
+    if(tree->data!=' '){
+        cout<<tree->data<<" "<<code<<"\n";
+        return;
+    }
+    code.push_back('0');
+    encodingTree(tree->l,code);
+    code.pop_back();
+    code.push_back('1');
+    encodingTree(tree->r,code);
+    code.pop_back();
 }
 
 int main() {
-  ios::sync_with_stdio(false);
-  cin.tie(0);
-
-  priority_queue<node,vector<node>,arrange>  pq;
-  int n; cin>>n;
-  while(n--){
-     char c; int w; cin>>c>>w;
-     pq.push(node(c,w,NULL,NULL));
-  }
-  while(pq.size()!=1 && pq.size()>=1){
-    node first = pq.top(); pq.pop();
-    node second = pq.top(); pq.pop();
-    node merge = node(' ',first.f+second.f,&first,&second);
-    pq.push(merge);
-  }
-  print_the_tree(pq.top());
+    priority_queue<node*,vector<node*>,comp> map;
+    int n;
+    cin>>n;
+    for(int i=0;i<n;i++){
+        char c; int d;
+        cin>>c>>d;
+        node* e=newnode(c,d);
+        map.push(e);
+    }
+    while(map.size()!=1){
+        node* first =map.top();
+        map.pop();
+        node* second =map.top();
+        map.pop();
+        node* e=newnode(' ',first->freq+second->freq);
+        e->l=first;
+        e->r=second;
+        map.push(e);
+    }
+    string code="";
+    encodingTree(map.top(),code);
+    return 0;
 }
